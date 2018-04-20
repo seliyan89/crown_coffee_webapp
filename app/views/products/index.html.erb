@@ -1,0 +1,30 @@
+<h1> Welcome to the products index page </h1>
+
+<%= link_to 'Create new product', new_product_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Img</th>
+    <th>Is_available</th>
+    <th>Is_deleted</th>
+    <th></th>
+  </tr>
+
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+      <td><%= product.description %></td>
+      <td><%= product.img %></td>
+      <td><%= product.is_available %></td>
+      <td><%= product.is_deleted %></td>
+      <td><%= link_to 'Show', product_path(product) %></td>
+      <td><%= link_to 'Edit', edit_product_path(product) %></td>
+      <td><%= link_to 'Delete', product_path(product),
+             method: :delete,
+            data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
