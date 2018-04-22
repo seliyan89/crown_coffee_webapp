@@ -1,4 +1,38 @@
-<h1> Welcome to the home page </h1>
+<div id="carosel-generic" class="carousel slide" data-ride="carosel">
+          <div class="container">
+                    <ol class="carousel-indicators">
+                              <li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
+                              <li data-target="#carousel-generic" data-slide-to="1"></li>
+                    </ol>
+          </div>
 
-<%= link_to 'Products index page', controller: 'products' %>
-<%= link_to 'Sign In/Up', new_user_session_path%>
+          <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                              <%= image_tag( "home.jpg", class: "img-responsive", alt: "Crown Coffee Slider Image")%>
+                              <div class="container-fluid">
+                                        <div class="carousel-centered">
+                                                  <div class="margin-b-40">
+                                                            <h1 class="carousel-title"> Welcome to the<br>home page </h1>
+                                                  </div>
+                                                  <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Gallery</a>
+                                        </div>
+                              </div>
+                    </div>
+
+                    <%# <div class="item">
+                              <%= image_tag( "home.jpg", class: "img-responsive", alt: "Crown Coffee Slider Image")%>
+                              <%# <div class="container">
+                                        <div class="carousel-centered">
+                                                  <div class="margin-b-40">
+                                                            <h2 class="carousel-title">Welcome</h2>
+                                                  </div>
+                                                  <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Gallery</a>                                                  
+                                        </div>
+                              </div>                              
+                    </div> %>
+          </div>
+
+
+<%# <%= link_to 'Products index page', controller: 'products' %>
+<%# <%= link_to 'Sign In/Up', new_user_session_path%>
+</div>
