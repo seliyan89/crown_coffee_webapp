@@ -14,8 +14,8 @@ body {
 }
 
 p {
-    @include font($size: 15px, $weight: 400, $family: $font-family-base);
-    color: $color-subtitle;
+    @include font($size: 1.5rem, $weight: 400, $family: $font-family-base);
+    color: $color-white;
     line-height: 1.4;
     margin-bottom: 15px;
 }
