@@ -26,6 +26,10 @@
         &-input {
             @include bg-opacity(#000, .15);
         }
+        &-copyright {
+            align-items: center;
+            justify-content: space-between;
+        }
         &-logo {
             @include size(85px, auto);
         }
