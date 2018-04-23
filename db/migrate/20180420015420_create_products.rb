@@ -7,6 +7,9 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :img
       t.boolean :is_deleted
       t.boolean :is_available
+      t.string :sku
+      t.string :parent
+      t.string :category
 
       t.timestamps
     end
