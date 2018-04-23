@@ -19,4 +19,5 @@ class User < ApplicationRecord
   	!is_deleted ? super : :deleted_account  
   end  
 
+  has_many :order
 end
