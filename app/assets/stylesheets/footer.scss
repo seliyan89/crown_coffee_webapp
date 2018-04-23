@@ -3,9 +3,9 @@
 ------------------------------------------------------------------*/
 
 .footer {
-    background: url(../img/1920x1080/03.jpg) no-repeat;
-    background-size: cover;
-    background-position: center center;
+    // background: url(../img/1920x1080/03.jpg) no-repeat;
+    // background-size: cover;
+    // background-position: center center;
     .footer {
         &-seperator {
             border-bottom: 1px solid rgba(255, 255, 255, .2);
@@ -15,12 +15,13 @@
         }
         &-list-item {
             color: #cbd3e1;
-            margin-bottom: 25px;
+            @include font($size: 1.5rem);
+            margin-bottom: 15px;
         }
         &-list-link {
             color: #cbd3e1;
             &:hover {
-                color: #fff;
+                color: $color-white;
             }
         }
         &-input {
