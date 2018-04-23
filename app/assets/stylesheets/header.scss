@@ -151,7 +151,7 @@
     .nav-item-child {
         @include position(relative);
         display: block;
-        @include font($size: 13px, $weight: 600, $family: $font-family-base);
+        @include font($size: 1rem, $weight: 600, $family: $font-family-base);
         color: $color-white;
         text-transform: uppercase;
         line-height: 55px;
