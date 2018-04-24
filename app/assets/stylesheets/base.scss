@@ -23,7 +23,7 @@ p {
 em,
 li,
 li a {
-    @include font($size: 1.2rem, $weight: 500, $family: $font-family-base);
+    @include font($size: 1.3rem, $weight: 500, $family: $font-family-base);
     color: $color-link;
 }
 
