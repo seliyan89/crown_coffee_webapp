@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
       def index
-            @products = Product.all
+            @products = Product.where.not(category: "Addons")
       end
     
       def show
