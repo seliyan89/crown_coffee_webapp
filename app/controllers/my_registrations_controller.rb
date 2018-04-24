@@ -5,7 +5,7 @@ class MyRegistrationsController < Devise::RegistrationsController
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
     set_flash_message :notice, :destroyed
     yield resource if block_given?
-    respond_with_navigational(reource){ redirect_to after_sign_out_path_for(resource_name) }
+    redirect_to '/'
   end
 
   def create
@@ -27,6 +27,8 @@ class MyRegistrationsController < Devise::RegistrationsController
     User.restore_user(cookies[:email])
     redirect_to new_user_session_path
   end 
+
+  
 
   private
 
