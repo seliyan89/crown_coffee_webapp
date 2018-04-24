@@ -1,0 +1,38 @@
+/*------------------------------------------------------------------
+  	[Footer]
+------------------------------------------------------------------*/
+
+.footer {
+    // background: url(../img/1920x1080/03.jpg) no-repeat;
+    // background-size: cover;
+    // background-position: center center;
+    .footer {
+        &-seperator {
+            border-bottom: 1px solid rgba(255, 255, 255, .2);
+        }
+        &-list {
+            margin-bottom: 0;
+        }
+        &-list-item {
+            color: #cbd3e1;
+            @include font($size: 1.5rem);
+            margin-bottom: 15px;
+        }
+        &-list-link {
+            color: #cbd3e1;
+            &:hover {
+                color: $color-white;
+            }
+        }
+        &-input {
+            @include bg-opacity(#000, .15);
+        }
+        &-copyright {
+            align-items: center;
+            justify-content: space-between;
+        }
+        &-logo {
+            @include size(85px, auto);
+        }
+    }
+}
