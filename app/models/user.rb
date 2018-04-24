@@ -8,6 +8,12 @@ class User < ApplicationRecord
   def soft_delete  
     update_attribute(:is_deleted, true)  
   end  
+
+  def self.restore_user(email)
+    user_to_update = User.find_by(email: email)
+    user_to_update.is_deleted = false
+    user_to_update.save
+  end
   
   # ensure user account is active  
   def active_for_authentication?  
