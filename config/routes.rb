@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'my_registrations' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+ devise_for :users, :controllers => { registrations: 'my_registrations' }
 
-  resources :products
-  resources :orders
+ devise_scope :user do
+ 	   get '/users/restore', :to => 'my_registrations#restore'
+ end
 
-  root 'welcomes#index'
+
+ resources :products
+
+ root 'welcomes#index'
 end
