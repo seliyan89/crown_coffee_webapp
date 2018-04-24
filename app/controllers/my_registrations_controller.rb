@@ -25,7 +25,6 @@ class MyRegistrationsController < Devise::RegistrationsController
 
   def restore
     User.restore_user(cookies[:email])
-    byebug
     redirect_to new_user_session_path
   end 
 

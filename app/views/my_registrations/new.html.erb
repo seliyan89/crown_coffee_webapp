@@ -9,6 +9,7 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
+        <%= link_to "Restore", users_restore_path %>
       <% else %>
         <%= devise_error_messages! %>
       <% end %>
