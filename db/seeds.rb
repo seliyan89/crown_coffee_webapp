@@ -8,6 +8,15 @@
 
 #Products seed
 
+# Variations
+var1 = Variation.create(name: "Add Ice", description: "Add ice to drink", price: 1, is_deleted: false, is_available: true, category: "Coffee", sku: "ADD1000")
+var2 = Variation.create(name: "Add Shot", description: "Add a shot of coffee to drink", price: 1, is_deleted: false, is_available: true, category: "Coffee", sku: "ADD1010")
+var3 = Variation.create(name: "Add Vanilla Syrup", description: "Add vanilla syrup to drink", price: 1, is_deleted: false, is_available: true, category: "Coffee", sku: "ADD1020")
+var4 = Variation.create(name: "Add Hazelnut", description: "Add hazelnut syrup to drink", price: 1, is_deleted: false, is_available: true, category: "Coffee", sku: "ADD1030")
+var5 = Variation.create(name: "Add Caramel", description: "Add caramel syrup to drink", price: 1, is_deleted: false, is_available: true, category: "Coffee", sku: "ADD1040")
+
+
+
 # House Salads
 Product.create(name: "Chicken House Salad", price: 12, description: "", img: "https://i.imgur.com/jpQOo3u.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Salads", sku: "SAL1000")
 Product.create(name: "Smoked Salmon House Salad", price: 13, description: "", img: "https://i.imgur.com/3EOhV8b.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Salads", sku: "SAL1010")
@@ -22,14 +31,54 @@ Product.create(name: "Vegetarian Sandwich", price: 11, description: "spiced curr
 
 
 # Coffee
-Product.create(name: "Espresso", price: 3, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1000")
-Product.create(name: "Americano", price: 3.5, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1010")
-Product.create(name: "Latte", price: 4, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1020")
-Product.create(name: "Cappuccino", price: 4, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1030")
-Product.create(name: "Flat White", price: 4, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1040")
-Product.create(name: "Macchiato", price: 3, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1050")
-Product.create(name: "Piccolo Latte", price: 4, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1060")
-Product.create(name: "Mocha", price: 5, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1070")
+prod1 = Product.create(name: "Espresso", price: 3, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1000")
+prod1.variations << var1
+prod1.variations << var2
+prod1.variations << var3
+prod1.variations << var4
+prod1.variations << var5
+prod1 = Product.create(name: "Americano", price: 3.5, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1010")
+prod1.variations << var1
+prod1.variations << var2
+prod1.variations << var3
+prod1.variations << var4
+prod1.variations << var5
+prod1 = Product.create(name: "Latte", price: 4, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1020")
+prod1.variations << var1
+prod1.variations << var2
+prod1.variations << var3
+prod1.variations << var4
+prod1.variations << var5
+prod1 = Product.create(name: "Cappuccino", price: 4, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1030")
+prod1.variations << var1
+prod1.variations << var2
+prod1.variations << var3
+prod1.variations << var4
+prod1.variations << var5
+prod1 = Product.create(name: "Flat White", price: 4, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1040")
+prod1.variations << var1
+prod1.variations << var2
+prod1.variations << var3
+prod1.variations << var4
+prod1.variations << var5
+prod1 = Product.create(name: "Macchiato", price: 3, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1050")
+prod1.variations << var1
+prod1.variations << var2
+prod1.variations << var3
+prod1.variations << var4
+prod1.variations << var5
+prod1 = Product.create(name: "Piccolo Latte", price: 4, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1060")
+prod1.variations << var1
+prod1.variations << var2
+prod1.variations << var3
+prod1.variations << var4
+prod1.variations << var5
+prod1 = Product.create(name: "Mocha", price: 5, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Coffee", sku: "COF1070")
+prod1.variations << var1
+prod1.variations << var2
+prod1.variations << var3
+prod1.variations << var4
+prod1.variations << var5
 
 # Non-coffee
 Product.create(name: "Hot Milk", price: 2, description: "", img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Other Drinks", sku: "DRK1010")
@@ -40,8 +89,6 @@ Product.create(name: "Perrier Sparkling Water", price: 3.5, description: "", img
 Product.create(name: "Snapple", price: 3.5, description: "", img: "https://i.imgur.com/5n8Hzcj.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Other Drinks", sku: "DRK1060")
 Product.create(name: "Gryphon Tea", price: 4, description: "", img: "https://i.imgur.com/ekdnuCM.jpg", is_deleted: false, is_available: true, parent: "parent", category: "Other Drinks", sku: "DRK1070")
 
-Product.create(name: "Add Ice", description: "Add ice to drink", price: 1, img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, category: "Addons", sku: "ADD1000", parent: "Coffee")
-Product.create(name: "Add Shot", description: "Add a shot of coffee to drink", price: 1, img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, category: "Addons", sku: "ADD1010", parent: "Coffee")
-Product.create(name: "Add Vanilla Syrup", description: "Add vanilla syrup to drink", price: 1, img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, category: "Addons", sku: "ADD1020", parent: "Coffee")
-Product.create(name: "Add Hazelnut", description: "Add hazelnut syrup to drink", price: 1, img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, category: "Addons", sku: "ADD1030", parent: "Coffee")
-Product.create(name: "Add Caramel", description: "Add caramel syrup to drink", price: 1, img: "https://i.imgur.com/8u568I3.jpg", is_deleted: false, is_available: true, category: "Addons", sku: "ADD1040", parent: "Coffee")
+# User Seed
+
+User.create(email: "admin@email.com", encrypted_password: "$2a$11$NomolLqDIwGTpJ2T410M3OgW14j1u24TgnCOGsMn8ryjZGL318EXO", is_admin: true)
