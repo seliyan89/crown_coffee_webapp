@@ -11,9 +11,6 @@
           <h6 class="font-italic"><%= product.description %></h6>
           <h6 class="font-italic">$<%= product.price.round() %></h6>
           <% if product.variations.any? %>
-            <%= form_with scope: :order, url: orders_path, local: true do |form| %>
-              <%= form.collection_select(:variation, Variation.where(category: "#{product.category}"), :id, :name, {:include_blank => ""}) %>
-            <% end %>
           <% end %>
           <br>
           <% if current_user == nil %>

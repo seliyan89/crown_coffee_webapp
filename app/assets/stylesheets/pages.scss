@@ -13,13 +13,14 @@
     @include font($size: 5rem, $weight: 600);
 }
 
-.card {
+.loc-card {
+    background-color: $color-white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
     @include margin($bottom: 25px);
-    &-title {
+    .card-title {
         text-shadow: -1px -1px 1px $color-white, 1px 1px 1px #000;
     }
-    &-text {
+    .card-text {
         color: $color-heading;
         @include font($size: 1.4rem);
     }
