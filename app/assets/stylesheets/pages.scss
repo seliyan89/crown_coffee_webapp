@@ -1,0 +1,29 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.jumbotron {
+    background-image: asset-url('locate.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 8.5%;
+    padding-bottom: 8%;
+}
+
+.display-4 {
+    @include font($size: 5rem, $weight: 600);
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    @include margin($bottom: 25px);
+    &-title {
+        text-shadow: -1px -1px 1px $color-white, 1px 1px 1px #000;
+    }
+    &-text {
+        color: $color-heading;
+        @include font($size: 1.4rem);
+    }
+    .open-hr {
+        @include font($size: 1.2rem);
+    }
+}
