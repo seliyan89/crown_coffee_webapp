@@ -128,16 +128,13 @@
     .nav-item {
         @include position(relative);
         display: block;
-        @include font($size: 1.3rem);
         &:last-child {
             .nav-item-child {
                 padding-right: 0;
-                @include font($size: 1.3rem);
             }
         }
         .nav-item-hover.active {
             &:after {
-                @include font($size: 1.3rem);
                 opacity: 1;
                 @include cubic-transition($delay: 0, $duration: 400ms, $property: (all));
             }
@@ -145,7 +142,6 @@
         &:hover {
             .nav-item-hover {
                 &:after {
-                    @include font($size: 1.3rem);
                     opacity: 1;
                     @include cubic-transition($delay: 0, $duration: 400ms, $property: (all));
                 }
@@ -153,10 +149,9 @@
         }
     }
     .nav-item-child {
-        @include font($size: 1.3rem);
         @include position(relative);
         display: block;
-        @include font($size: 1rem, $weight: 600, $family: $font-family-base);
+        @include font($size: 1.3rem, $weight: 600, $family: $font-family-base);
         color: $color-white;
         text-transform: uppercase;
         line-height: 55px;
@@ -164,10 +159,10 @@
         @include cubic-transition($delay: 0, $duration: 300ms, $property: (all));
     }
     .nav-item-hover {
-        @include font($size: 1.3rem);
+        // @include font($size: 1.3rem);
         @include position(relative);
         &:after {
-            @include font($size: 1.3rem);
+            // @include font($size: 1.3rem);
             @include position(absolute, $top: 45px, $left: 0);
             @include size(9px, 2px);
             background: $color-base;

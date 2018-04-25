@@ -138,7 +138,7 @@ h4 {
 }
 
 .left-img {
-    width: 100%;
+    @include size(100%);
 }
 
 .right-col {

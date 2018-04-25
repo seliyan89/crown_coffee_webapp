@@ -16,4 +16,9 @@ Rails.application.routes.draw do
   resources :orders
 
   get 'location' => 'pages#location'
+  get 'our_story' => 'pages#our_story'
+  get 'the_owner' => 'pages#the_owner'
+  get 'coffeebean' => 'pages#coffeebean'
+  get 'press' => 'pages#press'
+  get 'gallery' => 'pages#gallery'
 end
