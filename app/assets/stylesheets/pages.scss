@@ -7,6 +7,11 @@
     background-size: cover;
     padding-top: 8.5%;
     padding-bottom: 8%;
+    @include position (relative,
+    $top: center, $left: center);
+    -webkit-filter: sepia(20%) contrast(130%);
+    /* Safari 6.0 - 9.0 */
+    filter: sepia(20%) contrast(130%);
 }
 
 .display-4 {
@@ -17,6 +22,10 @@
     background-color: $color-white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
     @include margin($bottom: 25px);
+    .loc-card-body {
+        @include size(33.75rem,
+        19.44rem);
+    }
     .card-title {
         text-shadow: -1px -1px 1px $color-white, 1px 1px 1px #000;
     }

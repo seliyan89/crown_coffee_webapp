@@ -79,9 +79,9 @@
 
 .header {
     .logo {
-        @include size(100px);
+        @include size(13vh);
         float: left;
-        max-height: 95px;
+        max-height: 13vh;
         line-height: 65px;
     }
     .logo-wrap {
@@ -94,7 +94,7 @@
     }
     .logo-img {
         display: inline-block;
-        @include size(85px, auto);
+        @include size(auto, auto);
         max-width: 100%;
         max-height: 100%;
         vertical-align: middle;
@@ -128,13 +128,16 @@
     .nav-item {
         @include position(relative);
         display: block;
+        @include font($size: 1.3rem);
         &:last-child {
             .nav-item-child {
                 padding-right: 0;
+                @include font($size: 1.3rem);
             }
         }
         .nav-item-hover.active {
             &:after {
+                @include font($size: 1.3rem);
                 opacity: 1;
                 @include cubic-transition($delay: 0, $duration: 400ms, $property: (all));
             }
@@ -142,6 +145,7 @@
         &:hover {
             .nav-item-hover {
                 &:after {
+                    @include font($size: 1.3rem);
                     opacity: 1;
                     @include cubic-transition($delay: 0, $duration: 400ms, $property: (all));
                 }
@@ -149,6 +153,7 @@
         }
     }
     .nav-item-child {
+        @include font($size: 1.3rem);
         @include position(relative);
         display: block;
         @include font($size: 1rem, $weight: 600, $family: $font-family-base);
@@ -159,8 +164,10 @@
         @include cubic-transition($delay: 0, $duration: 300ms, $property: (all));
     }
     .nav-item-hover {
+        @include font($size: 1.3rem);
         @include position(relative);
         &:after {
+            @include font($size: 1.3rem);
             @include position(absolute, $top: 45px, $left: 0);
             @include size(9px, 2px);
             background: $color-base;
