@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
 
       private
       def order_params
-            params.require(:order).permit(:number, :user_id, :product_id, :quantity, :price, :payment_status, :is_complete)
+            params.require(:order).permit(:number, :user_id, :product_id, :quantity, :price, :payment_status, :is_complete, :variation_id)
       end
 
 

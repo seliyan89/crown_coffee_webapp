@@ -91,4 +91,4 @@ Product.create(name: "Gryphon Tea", price: 4, description: "", img: "https://i.i
 
 # User Seed
 
-User.create(email: "admin@email.com", encrypted_password: "$2a$11$NomolLqDIwGTpJ2T410M3OgW14j1u24TgnCOGsMn8ryjZGL318EXO", is_admin: true)
+User.create(email: "admin@email.com", current_sign_in_at: "2018-04-24 07:22:05", last_sign_in_at: "2018-04-24 07:22:05", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", created_at: "2018-04-24 07:22:05", updated_at: "2018-04-24 07:22:05", encrypted_password: "$2a$11$NomolLqDIwGTpJ2T410M3OgW14j1u24TgnCOGsMn8ryjZGL318EXO", is_admin: true)

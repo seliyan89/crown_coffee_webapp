@@ -9,5 +9,8 @@ Rails.application.routes.draw do
 
   root 'welcomes#index'
 
+  resources :products
+  resources :orders
+
   get 'location' => 'pages#location'
 end
