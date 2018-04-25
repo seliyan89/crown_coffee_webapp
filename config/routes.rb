@@ -7,8 +7,13 @@ Rails.application.routes.draw do
  	   get '/users/restore', :to => 'my_registrations#restore'
  end
 
-
  resources :products
+ resources :orders
 
- root 'welcomes#index'
+  root 'welcomes#index'
+
+  resources :products
+  resources :orders
+
+  get 'location' => 'pages#location'
 end
