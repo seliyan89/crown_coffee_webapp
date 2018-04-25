@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_23_051203) do
+ActiveRecord::Schema.define(version: 2018_04_24_071238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2018_04_23_051203) do
     t.text "first_name"
     t.text "last_name"
     t.integer "phone_number_mobile"
-    t.integer "phone_number_office"
     t.boolean "is_admin"
     t.boolean "is_deleted"
     t.index ["email"], name: "index_users_on_email", unique: true
