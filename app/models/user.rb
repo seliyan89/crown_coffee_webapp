@@ -29,6 +29,6 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :phone_number_mobile, presence: true
   validates :phone_number_mobile, numericality: { only_integer: true }, :allow_blank => true
-  validates :first_name, :last_name, :email, :format => { :with => /[a-zA-Z0-9-@.]/ }, :allow_blank => true
+  validates :first_name, :last_name, :email, :format => { :with => /\A[a-zA-Z0-9-@\s.]*\z/ }, :allow_blank => true
 
 end
