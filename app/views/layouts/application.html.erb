@@ -131,8 +131,8 @@
                 </ul>
               </div>
             <% end %>
-            <% if notice %>
-              <p class="alert alert-success"><%= notice %></p>
+            <% if note %>
+              <p class="alert alert-success"><%= note %></p>
             <% end %>
             <%= form_with scope: :comment, url: comments_path, local: true do |form| %>
               <%= form.text_field :name, :class => "form-control footer-input margin-b-20", placeholder: "Name" %>

@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 	
 		@comment = Comment.new(comment_params)
 		if( @comment.save )
-			redirect_to "#{URI(request.referer).path}%{subject}"% { subject: '#note' }, flash: {notice: "Thanks, we will get back to you shortly"}
+			redirect_to "#{URI(request.referer).path}%{subject}"% { subject: '#note' }, flash: {note: "Thanks, we will get back to you shortly"}
 		else
 			render "welcomes/index"
 		end
