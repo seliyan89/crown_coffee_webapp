@@ -15,11 +15,11 @@ class OrdersController < ApplicationController
       end
     
       def create
-            order = Order.find_by user_id: order_params[:user_id], product_id: order_params[:product_id], variation_id: order_params[:variation_id], payment_status: "In Cart"
+            old_order = Order.find_by user_id: order_params[:user_id], product_id: order_params[:product_id], variation_id: order_params[:variation_id], payment_status: "In Cart"
             
-            if order != nil
-                  order.quantity = order.quantity += 1
-                  order.save
+            if old_order != nil
+                  old_order.quantity = order.quantity += 1
+                  old_order.save
             else
                   @order = Order.new(order_params)
                   @order.save

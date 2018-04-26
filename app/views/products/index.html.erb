@@ -18,6 +18,8 @@
           <%= form_with scope: :order, url: orders_path, local: true do |form| %>
             <% if product.variations.any? %>
               <p><%= form.collection_select(:variation_id, Variation.where(category: "#{product.category}"), :id, :name, {:include_blank => ""}) %></p>
+            <% else %>
+              <%= form.hidden_field :variation_id, :value => 1 %>
             <% end %>
             <%= form.hidden_field :number, :value => request.session_options[:id] %>
             <% if current_user %>
