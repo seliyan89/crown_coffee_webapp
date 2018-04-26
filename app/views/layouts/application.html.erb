@@ -20,63 +20,52 @@
   <title>Crown Coffee</title>
 </head>
 
-<body>
-  <%# HEADER %>
-  <header class="header navbar-fixed-top">
-    <%# Navbar %>
-    <nav class="navbar" role="navigation">
-
-      <div class="container">
-
-        <%# Logo %>
-        <div class="logo">
+<body id="crown_coffee" data-spy="scroll" data-target=".navbar" data-offset="50">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded=false>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>          
+        </button>
+        <div class="navbar-brand logo">
           <a class="logo-wrap" href="/">
             <%= image_tag( "logo.png", class: "logo-img logo-img-main", alt: "Crown Coffee")%>
             <%= image_tag( "logo-white.png", class: "logo-img logo-img-active", alt: "Crown Coffee" )%>
           </a>
-        </div>
-
-        <%# <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse" aria-controls="nav-collapse" aria-expanded=false aria-label="Toggle navigation" style>
-          <span class="sr-only">Toggle navigation</span>
-          <span class="toggle-icon"></span>
-        </button> %>
-
-        <%# Nav Link %>
-        <%# <div class="collapse navbar-collapse nav-collapse"> %>
-          <div class="menu-container">
-            <nav class="navbar navbar-expand-lg border-0">
-              <ul class="navbar-nav navbar-nav-right">
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle nav-item-child" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="/our_story">Our Story</a>
-                      <a class="dropdown-item" href="/the_owner">The Owner</a>
-                      <a class="dropdown-item" href="/coffeebean">Coffeebeans</a>
-                      <a class="dropdown-item" href="/press">Press</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/products">Menu</a></li>
-                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">Cart</a></li>
-                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/location">Location</a></li>    
-                <% if current_user == nil %>        
-                  <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/users/sign_in">Login/Register</a></li> 
-                <% else %>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle nav-item-child" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <%= current_user.first_name %>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="/users/edit">Edit Profile</a>
-                     <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete, :class => "dropdown-item" %>
-                    </div>
-                  </li>
-                <%end%>
-              </ul>
-            </nav>
-          </div>
-        <%# </div> %>
+        </div>        
       </div>
-    </nav>
-  </header>
+      <div class="navbar-collapse collapse" id="myNavbar" aria-expended="false" style="height:1px;">
+        <ul class="nav navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown"><a class="nav-link dropdown-toggle nav-item-child" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/our_story">Our Story</a>
+              <a class="dropdown-item" href="/the_owner">The Owner</a>
+              <a class="dropdown-item" href="/coffeebean">Coffeebeans</a>
+              <a class="dropdown-item" href="/press">Press</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/products">Menu</a></li>
+          <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">Cart</a></li>
+          <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/location">Location</a></li>    
+          <% if current_user == nil %>        
+            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/users/sign_in">Login/Register</a></li> 
+          <% else %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle nav-item-child" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.first_name %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/users/edit">Edit Profile</a>
+                <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete, :class => "dropdown-item" %>
+              </div>
+            </li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
   <%= yield %>
 
