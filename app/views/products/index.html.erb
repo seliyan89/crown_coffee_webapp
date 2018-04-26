@@ -4,12 +4,12 @@
   <div class="row">
   <% @products.each do |product| %>
     <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-      <div class="card">
+      <div class="card" id="productCard">
         <img class="card-img-top" src="<%= product.img %>">
         <div class="card-block">
           <h5 class="text-bold"><%= product.name %></h5>
           <h6 class="font-italic"><%= product.description %></h6>
-          <h6 class="font-italic">$<%= product.price.round() %></h6>
+          <h6 class="font-italic"><%= number_to_currency(product.price) %></h6>
           <%= form_with scope: :order, url: orders_path, local: true do |form| %>
             <% if product.variations.any? %>
               <p><%= form.collection_select(:variation_id, Variation.where(category: "#{product.category}"), :id, :name, {:include_blank => ""}) %></p>
@@ -26,7 +26,7 @@
             <% if current_user == nil %>
               <a class="btn btn-success" href="/users/sign_in">Add to Cart</a>
             <% else %>
-              <%= form.submit "Add to Cart", :class => "btn btn-success" %>
+              <%= form.submit "Add to Cart", :class => "btn btn-success"%>
             <% end %>
           <% end %>
           
@@ -46,48 +46,3 @@
   </div>
 </div>
 
-
-<% if false %>
-<br>
-          <% if current_user == nil %>
-            <a class="btn btn-success" href="/users/sign_in">Add to Cart</a>
-           <% else %>
-            <%= button_to "Add to Cart", {:controller => "orders", :action => "create", :order => {:number => request.session_options[:id], :user_id => current_user.id, :product_id => product.id, :quantity => 1, :price => product.price, :payment_status => "In Cart", :is_complete => false}}, :class => "btn btn-success", :method => :post%>
-          <% end %>
-
-<%= link_to 'Create new product', new_product_path %>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th>Img</th>
-    <th>Is_available</th>
-    <th>Is_deleted</th>
-    <th>Add to cart</th>
-    <th></th>
-  </tr>
-
-  <% @products.each do |product| %>
-    <tr>
-      <td><%= product.name %></td>
-      <td><%= product.price %></td>
-      <td><%= product.description %></td>
-      <td><%= product.img %></td>
-      <td><%= product.is_available %></td>
-      <td><%= product.is_deleted %></td>
-      <% if current_user == nil %>
-      <td><a class="btn btn-success" href="/users/sign_in">Add to Cart</a></td>
-      <% else %>
-      <td><%= button_to "Add to Cart", {:controller => "orders", :action => "create", :order => {:number => request.session_options[:id], :user_id => current_user.id, :product_id => product.id, :quantity => 1, :price => product.price, :payment_status => "In Cart", :is_complete => false}}, :class => "btn btn-success", :method => :post%>
-      <% end %>
-      <td><%= link_to 'Show', product_path(product) %></td>
-      <td><%= link_to 'Edit', edit_product_path(product) %></td>
-      <td><%= link_to 'Delete', product_path(product),
-             method: :delete,
-            data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
-
-<% end %>

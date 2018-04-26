@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.card {
+#productCard {
       font-size: 1em;
       overflow: hidden;
       padding: 0;
@@ -28,10 +28,10 @@
       max-height: 55%;
   }
   
-h5 {
+#productCard h5 {
       color: white;
 }
 
-h6 {
+#productCard h6 {
       color: white;
 }
