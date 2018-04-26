@@ -2,37 +2,43 @@
   	[Footer]
 ------------------------------------------------------------------*/
 
+.content {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
 .footer {
-    // background: url(../img/1920x1080/03.jpg) no-repeat;
-    // background-size: cover;
-    // background-position: center center;
-    .footer {
-        &-seperator {
-            border-bottom: 2px solid rgba(255, 255, 255, .3);
+    &-seperator {
+        border-bottom: 1px solid rgba(255, 255, 255, .2);
+        .content-lg {
+            padding-top: 3.125rem;
+            padding-bottom: 1.25rem;
         }
-        &-list {
-            margin-bottom: 0;
+    }
+    &-list {
+        margin-bottom: 0;
+    }
+    &-list-item {
+        color: #cbd3e1;
+        @include font($size: 1.7rem);
+    }
+    &-list-link {
+        color: #cbd3e1;
+        &:hover {
+            color: $color-white;
         }
-        &-list-item {
-            color: #cbd3e1;
-            @include font($size: 1.7rem);
-            margin-bottom: 15px;
-        }
-        &-list-link {
-            color: #cbd3e1;
-            &:hover {
-                color: $color-white;
-            }
-        }
-        &-input {
-            @include bg-opacity(#000, .15);
-        }
-        &-copyright {
-            align-items: center;
-            justify-content: space-between;
-        }
-        &-logo {
-            @include size(85px, auto);
-        }
+    }
+    &-input {
+        @include bg-opacity(#000, .15);
+    }
+    &-copyright {
+        align-items: center;
+        justify-content: space-between;
+    }
+    &-logo {
+        @include size(auto, auto);
+        max-width: 13vw;
+        max-height: 13vh;
+        vertical-align: middle;
     }
 }

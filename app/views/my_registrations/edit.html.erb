@@ -1,4 +1,4 @@
-<div class="content-lg container-fluid p-0">
+<div class="content-lg container-fluid p-0 section-seperator">
   <div class="row two-col">
     <div class="col-md-6">
       <%= image_tag( "edit.jpg", class: "left-img", alt: "Change Password Page")%> 
@@ -34,15 +34,9 @@
       </div>
 
       <div class="field">
-        <%= f.label :phone_number_office %><br />
-        <%= f.telephone_field :phone_number_office, autofocus: true, autocomplete: "off", class: "form-control" %>
-      </div>
-
-      <div class="field">
         <%= f.label :password %> <em>(leave blank if you don't want to change it)</em><br />
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
         <% if @minimum_password_length %>
-        <br />
         <em><%= @minimum_password_length %> characters minimum</em>
         <% end %>
       </div>
@@ -61,9 +55,11 @@
         <%= f.submit "Update", class: "btn btn-theme btn-theme-sm btn-base-bg text-uppercase" %>
       </div>
       <% end %>
-
-      <h3>Cancel my account</h3>
-
+<br>
+      <h2>Cancel my account</h2>
       <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-theme btn-theme-sm btn-base-bg text-uppercase" %></p>
-
+      
       <%= link_to "Back", :back %>
+    </div>
+  </div>
+</div>

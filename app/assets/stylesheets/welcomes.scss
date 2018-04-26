@@ -7,3 +7,17 @@
     right: 10rem;
     padding: 1rem;
 }
+
+.carousel,
+.item,
+.active {
+    height: 86vh;
+    // margin-bottom: 60px;
+}
+
+// .carousel-inner {
+//     height: 100%;
+// }
+.fill {
+    @include size(100%, 100%);
+}

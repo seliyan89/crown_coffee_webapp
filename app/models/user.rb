@@ -26,4 +26,9 @@ class User < ApplicationRecord
   end  
 
   has_many :order
+
+  validates :first_name, :last_name, :phone_number_mobile, presence: true
+  validates :phone_number_mobile, numericality: { only_integer: true }, :allow_blank => true
+  validates :first_name, :last_name, :email, :format => { :with => /\A[a-zA-Z0-9-@\s.]*\z/ }, :allow_blank => true
+
 end
