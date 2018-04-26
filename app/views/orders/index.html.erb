@@ -1,5 +1,60 @@
 <h1> Welcome to your cart! </h1>
 
+<div class="container" id="tableContainer">
+  <table class="table table-hover table-striped table-responsive-lg" id="orderTable">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Total</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% count = 1 %>
+    <% @my_orders.each do |order| %>
+      <tr>
+        <th scope="row"><%= count %><% count += 1 %></th>
+        <% if order.variation %>
+          <td><%= order.product.name %> (<%= order.variation.name %>)</td>
+        <% else %>
+          <td><%= order.product.name %></td>
+        <% end %>
+        <td><%= order.quantity %></td>
+        <td><%= number_to_currency(order.price) %></td>
+        <td><%= number_to_currency(order.quantity * order.price) %>
+        <td><%= link_to 'Remove', order_path(order),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-danger" %></td>
+      </tr>
+    <% end %>
+    <tr>
+    <th></th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+      <td>Grand Total:</td>
+      <td></td>
+      <td></td>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+<%if false%>
 <table>
   <tr>
     <th>Number</th>
@@ -28,3 +83,4 @@
     </tr>
   <% end %>
 </table>
+<% end %>
