@@ -1,11 +1,13 @@
 class CommentsController < ApplicationController
 
 	def create
+	
 		@comment = Comment.new(comment_params)
-		@comment.save
-		# flash[:notice] = "Thanks! We will be in touch soon!"
-		redirect_to URI(request.referer).path, flash: {notice: "Thanks, we will get back to you shortly"}
-
+		if( @comment.save )
+			redirect_to "#{URI(request.referer).path}%{subject}"% { subject: '#note' }, flash: {notice: "Thanks, we will get back to you shortly"}
+		else
+			render "welcomes/index"
+		end
 	end
 
 	private

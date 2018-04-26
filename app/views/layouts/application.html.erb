@@ -103,8 +103,19 @@
             </ul>
           <!-- End List -->
           </div>
-          <div class="col-sm-5 sm-margin-b-30">
-            <h2>Send Us A Note</h2>
+          <div id="note" class="col-sm-5 sm-margin-b-30">
+            <h2>Send Us A Note</h2>     
+            <% if @comment && @comment.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being submiited:</h2>
+             
+                <ul>
+                <% @comment.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
             <% if notice %>
               <p class="alert alert-success"><%= notice %></p>
             <% end %>
