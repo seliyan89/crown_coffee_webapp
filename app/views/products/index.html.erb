@@ -14,31 +14,23 @@
         <div class="card-block">
           <h5 class="text-bold"><%= product.name %></h5>
           <h6 class="font-italic"><%= product.description %></h6>
-          <h6 class="font-italic"><%= number_to_currency(product.price) %></h6>
-          <%= form_with scope: :order, url: orders_path, local: true do |form| %>
-            <% if product.variations.any? %>
-              <p><%= form.collection_select(:variation_id, Variation.where(category: "#{product.category}"), :id, :name, {:include_blank => ""}) %></p>
-            <% else %>
-              <%= form.hidden_field :variation_id, :value => 1 %>
+          <% if product.variations.any? %>
+            <select class="selectVariation" id="<%= product.sku %>">
+            <option selected value></option>
+            <% product.variations.each do |variation| %>
+              <option value="<%= variation.name %>"><%= variation.name %></option>
             <% end %>
-            <%= form.hidden_field :number, :value => request.session_options[:id] %>
-            <% if current_user %>
-            <%= form.hidden_field :user_id, :value => current_user.id %>
-            <% end %>
-            <%= form.hidden_field :product_id, :value => product.id %>
-            <%= form.hidden_field :quantity, :value => 1 %>
-            <%= form.hidden_field :price, :value => product.price %>
-            <%= form.hidden_field :payment_status, :value => "In Cart" %>
-            <%= form.hidden_field :is_complete, :value => false %>
-            <% if current_user == nil %>
-              <a class="btn btn-success" href="/users/sign_in">Add to Cart</a>
-            <% else %>
-              <%= form.submit "Add to Cart", :class => "btn btn-success"%>
-            <% end %>
+            </select>
+            <br>
           <% end %>
-          
+          <h6 class="font-italic"><%= number_to_currency(product.price) %></h6>
+          <% if current_user == nil %>
+            <a class="btn btn-success" href="/users/sign_in">Add to Cart</a>
+          <% else %>
+            <a class="btn btn-success addToCart" data-productsku="<%= product.sku %>">Add to Cart</a>
+          <% end %>
           <% if current_user != nil && current_user.is_admin == true %>
-          <br>
+            <br>
             <%= link_to 'Show', product_path(product), :class => "btn btn-sm btn-info"%>
             <%= link_to 'Edit', edit_product_path(product), :class => "btn btn-sm btn-warning"%>
             <%= link_to 'Delete', product_path(product),
@@ -52,3 +44,4 @@
   <% end %>
   </div>
 </div>
+

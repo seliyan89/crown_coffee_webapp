@@ -2,7 +2,9 @@ class OrdersController < ApplicationController
       def index
             @orders = Order.all
             @current_session = request.session_options[:id]
-            @my_orders = Order.where("user_id = ? and payment_status = ?", current_user.id, "In Cart")
+            decoded_order = cookies[:cart].gsub "-", ","
+            decoded_order = decoded_order.gsub "/", ""
+            @cart_orders = JSON.parse(decoded_order)
       end
     
       def show
