@@ -14,6 +14,63 @@
     </thead>
     <tbody>
     <% count = 1 %>
+    <% @grand_total = 0 %>
+    <% @cart_orders.each do |key, value| %>
+      <% if key.length > 7 %>
+        <% mainSku = key[0..6]%>
+        <% varName = key[7..-1]%>
+        <% @line_item_main = Product.find_by("sku": mainSku) %>
+        <% @line_item_var = Variation.find_by("name": varName) %>
+        <tr>
+        <th scope="row"><%= count %><% count += 1 %></th>
+        <td><%= "#{@line_item_main.name} (#{@line_item_var.name})" %></td>
+        <td><%= value %></td>
+        <td><%= number_to_currency(@line_item_main.price + @line_item_var.price) %></td>
+        <td><%= number_to_currency(value * (@line_item_main.price + @line_item_var.price)) %></td>
+        <% @grand_total = @grand_total + (value * (@line_item_main.price + @line_item_var.price)) %>
+        <td><a class="btn btn-danger btn-sm deleteFromCart" data-productsku="<%= key %>">Remove</a></td>
+        </tr>
+      <% else %>
+        <% @line_item = Product.find_by("sku": key) %>
+        <tr>
+        <th scope="row"><%= count %><% count += 1 %></th>
+        <td><%= @line_item.name %></td>
+        <td><%= value %></td>
+        <td><%= number_to_currency(@line_item.price) %></td>
+        <td><%= number_to_currency(value * @line_item.price) %></td>
+        <% @grand_total = @grand_total + (value * @line_item.price) %>
+        <td><a class="btn btn-danger btn-sm deleteFromCart" data-productsku="<%= @line_item.sku %>">Remove</a></td>
+        </tr>
+      <% end %>
+
+    <% end %>
+    
+    <tr>
+    <th></th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+      <td>Grand Total:</td>
+      <td><%= number_to_currency(@grand_total) %></td>
+      <td></td>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+<%if false%>
+<% count = 1 %>
     <% @my_orders.each do |order| %>
       <tr>
         <th scope="row"><%= count %><% count += 1 %></th>
@@ -30,57 +87,4 @@
               data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-danger" %></td>
       </tr>
     <% end %>
-    <tr>
-    <th></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th></th>
-      <td></td>
-      <td></td>
-      <td>Grand Total:</td>
-      <td></td>
-      <td></td>
-    </tbody>
-  </table>
-</div>
-
-
-
-
-
-
-<%if false%>
-<table>
-  <tr>
-    <th>Number</th>
-    <th>User</th>
-    <th>Product</th>
-    <th>Quantity</th>
-    <th>Price</th>
-    <th>Payment Status</th>
-    <th>Payment Complete</th>
-    <th></th>
-  </tr>
-
-  <% @orders.each do |order| %>
-    <tr>
-      <td><%= order.number %></td>
-      <td><%= order.user.email %></td>
-      <td><%= order.product.name %></td>
-      <td><%= order.quantity %></td>
-      <td><%= order.price %></td>
-      <td><%= order.payment_status %></td>
-      <td><%= order.is_complete %></td>
-      <td><%= link_to 'Show', order_path(order) %></td>
-      <td><%= link_to 'Delete', order_path(order),
-        method: :delete,
-      data: { confirm: 'Are you sure?' }%></td>
-    </tr>
-  <% end %>
-</table>
 <% end %>
