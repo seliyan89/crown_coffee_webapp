@@ -24,6 +24,10 @@ class OrdersController < ApplicationController
                   @order = Order.new(order_params)
                   @order.save
             end
+
+            User.find_each do |user|
+                  UserMailer.with(user: user).order_notification_email.deliver_now
+            end
       end
     
       def update
