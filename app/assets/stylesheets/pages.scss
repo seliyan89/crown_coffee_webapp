@@ -16,18 +16,21 @@
 
 .display-4 {
     @include font($size: 5rem, $weight: 600);
+    background-color: #33333375;
 }
 
 .loc-card {
     background-color: $color-white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
     @include margin($bottom: 25px);
+    word-wrap: break-word;
     .loc-card-body {
         @include size(33.75rem,
         19.44rem);
     }
     .card-title {
         text-shadow: -1px -1px 1px $color-white, 1px 1px 1px #000;
+        word-wrap: break-word;
     }
     .card-text {
         color: $color-heading;
@@ -35,5 +38,32 @@
     }
     .open-hr {
         @include font($size: 1.2rem);
+    }
+}
+
+@media (max-width: $screen-md-max) {
+    .display-4 {
+        @include font($size: 4em, $weight: 600);
+        background-color: #33333375;
+    }
+    .loc-card {
+        h2 {
+            @include font($size: 1.8em);
+        }
+        .card-text {
+            @include font($size: 1em);
+        }
+    }
+}
+
+@media (max-width: $screen-sm-max) {
+    .display-4 {
+        @include font($size: 3em, $weight: 600);
+        background-color: #33333375;
+    }
+    .loc-card {
+        h2 {
+            @include font($size: 1.6em);
+        }
     }
 }

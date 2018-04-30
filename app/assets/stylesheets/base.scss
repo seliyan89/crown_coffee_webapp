@@ -28,9 +28,13 @@ li a {
 }
 
 .navbar-default {
-    background-color: $color-heading;
+    background-color: $background-color;
     background-image: none;
     background-repeat: no-repeat;
+}
+
+.navbar-dark {
+    color: $color-base !important;
 }
 
 .btn-primary {
