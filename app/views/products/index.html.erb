@@ -9,18 +9,15 @@
   <div class="row">
   <% @products.each do |product| %>
     <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-      <div class="card" id="productCard">
+      <div class="card productCard" id="<%= product.sku %>">
         <img class="card-img-top" src="<%= product.img %>">
-        <div class="card-block">
+        <div class="card-block deepProductCard">
           <h5 class="text-bold"><%= product.name %></h5>
           <h6 class="font-italic"><%= product.description %></h6>
           <% if product.variations.any? %>
-            <select class="selectVariation" id="<%= product.sku %>">
-            <option selected value></option>
             <% product.variations.each do |variation| %>
-              <option value="<%= variation.name %>"><%= variation.name %></option>
+              <input type="checkbox" name="variation" value="<%= variation.sku %>"> <%= variation.name%><br>
             <% end %>
-            </select>
             <br>
           <% end %>
           <h6 class="font-italic"><%= number_to_currency(product.price) %></h6>

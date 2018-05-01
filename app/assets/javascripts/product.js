@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
 
       /*
@@ -22,54 +22,51 @@ $(function() {
             if (parts.length == 2) return parts.pop().split(";").shift().replace(/-/g, ",");
       };
 
-      function updateCookie(sku, quantity) {
-            if ($("#" + sku).val() == 0 || $("#" + sku).length == 0) {
+      function updateCookie(thisThing, quantity) {
+            // if no variations are found
+            if (thisThing.parent().not(":has(input)").length > 0) {
                   let cookieJSON = JSON.parse(getCookie("cart"));
+                  let sku = thisThing.attr("data-productsku");
 
+                  //if the cookie already exists
                   if (cookieJSON[sku] != 0 && cookieJSON[sku] != undefined) {
                         cookieJSON[sku] = cookieJSON[sku] + quantity;
                   } else {
-                  cookieJSON[sku] = quantity;
+                        cookieJSON[sku] = quantity;
                   };
 
                   let newCookieString = JSON.stringify(cookieJSON);
                   document.cookie = "cart=" + newCookieString.replace(/,/g, "-");
-
             } else {
-
+                  let sku = thisThing.attr("data-productsku");
                   let cookieJSON = JSON.parse(getCookie("cart"));
 
-                  if (cookieJSON[sku + $("#" + sku).val()] != 0 && cookieJSON[sku + $("#" + sku).val()] != undefined) {
-                        cookieJSON[sku + $("#" + sku).val()] = cookieJSON[sku + $("#" + sku).val()] + quantity;
+                  let variationArray = [];
+                  //if variations exist, loop through and create a new cookie
+                  thisThing.siblings("input").each(function () {
+                        if ($(this).is(':checked')) {
+                              variationArray.push($(this).val());
+                        };
+                  });
+
+
+                  let variationString = variationArray.join("");
+
+                  if (cookieJSON[sku + variationString] != 0 && cookieJSON[sku + variationString] != undefined) {
+                        cookieJSON[sku + variationString] = cookieJSON[sku + variationString] + quantity;
                   } else {
-                        cookieJSON[sku + $("#" + sku).val()] = quantity;
-                  };
+                        cookieJSON[sku + variationString] = quantity;
+                  }
 
                   let newCookieString = JSON.stringify(cookieJSON);
                   document.cookie = "cart=" + newCookieString.replace(/,/g, "-");
-
-                  
             };
-            // if ($(this).siblings("select") && $(this).siblings("select") != 0) {
-            //       console.log($(this).siblings("select").text("yoyoyoy"))
-            // }
-            
+
       };
 
-      
-      $(".addToCart").on("click", function() {updateCookie(this.dataset.productsku, 1)})
-      // $(document).on("click", ".addToCart", function() {
-      //       updateCookie(this.productId, 1)
-      // });
 
-      /* 
-            Cart Cookie Test
-
-      */
-      // console.log("original: " + getCookie("cart"));
-      // updateCookie("newkey", "newvalue");
-      // console.log("new: " + getCookie("cart"));
-      // deleteKeyFromCookie("okey");
-      // console.log("deleted: " + getCookie("cart"));
+      $(".addToCart").on("click", function () {
+            updateCookie($(this), 1)
+      });
 
 });

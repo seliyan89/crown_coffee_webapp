@@ -14,7 +14,42 @@
     </thead>
     <tbody>
     <% count = 1 %>
-    <% @grand_total = 0 %>
+    <% @cart_orders.each do |key, value| %>
+    <tr>
+      <th scope="row"><%= count %><% count += 1 %></th>
+      <td><%= value["current_order_name"] %></td>
+      <td><%= value["current_order_quantity"] %></td>
+      <td><%= number_to_currency(value["current_order_unit_price"]) %></td>
+      <td><%= number_to_currency(value["current_order_total"]) %></td>
+      <td><a class="btn btn-danger btn-sm deleteFromCart" data-productsku="<%= key %>">Remove</a></td>
+    </tr>
+    <% end %>
+    <tr>
+    <th></th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+      <td>Grand Total:</td>
+      <td><%= number_to_currency(@grand_total) %></td>
+      <td></td>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+<%if false%>
+<% @grand_total = 0 %>
     <% @cart_orders.each do |key, value| %>
       <% if key.length > 7 %>
         <% mainSku = key[0..6]%>
@@ -43,48 +78,5 @@
         </tr>
       <% end %>
 
-    <% end %>
-    
-    <tr>
-    <th></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th></th>
-      <td></td>
-      <td></td>
-      <td>Grand Total:</td>
-      <td><%= number_to_currency(@grand_total) %></td>
-      <td></td>
-    </tbody>
-  </table>
-</div>
-
-
-
-
-
-
-<%if false%>
-<% count = 1 %>
-    <% @my_orders.each do |order| %>
-      <tr>
-        <th scope="row"><%= count %><% count += 1 %></th>
-        <% if order.variation %>
-          <td><%= order.product.name %> (<%= order.variation.name %>)</td>
-        <% else %>
-          <td><%= order.product.name %></td>
-        <% end %>
-        <td><%= order.quantity %></td>
-        <td><%= number_to_currency(order.price) %></td>
-        <td><%= number_to_currency(order.quantity * order.price) %>
-        <td><%= link_to 'Remove', order_path(order),
-              method: :delete,
-              data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-danger" %></td>
-      </tr>
     <% end %>
 <% end %>
