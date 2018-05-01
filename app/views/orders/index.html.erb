@@ -38,45 +38,7 @@
       <td></td>
       <td>Grand Total:</td>
       <td><%= number_to_currency(@grand_total) %></td>
-      <td></td>
+      <td><%= link_to 'Pay with Stripe!', new_order_path(@order), :class => "btn btn-sm btn-success createOrder" %></td>
     </tbody>
   </table>
 </div>
-
-
-
-
-
-
-<%if false%>
-<% @grand_total = 0 %>
-    <% @cart_orders.each do |key, value| %>
-      <% if key.length > 7 %>
-        <% mainSku = key[0..6]%>
-        <% varName = key[7..-1]%>
-        <% @line_item_main = Product.find_by("sku": mainSku) %>
-        <% @line_item_var = Variation.find_by("name": varName) %>
-        <tr>
-        <th scope="row"><%= count %><% count += 1 %></th>
-        <td><%= "#{@line_item_main.name} (#{@line_item_var.name})" %></td>
-        <td><%= value %></td>
-        <td><%= number_to_currency(@line_item_main.price + @line_item_var.price) %></td>
-        <td><%= number_to_currency(value * (@line_item_main.price + @line_item_var.price)) %></td>
-        <% @grand_total = @grand_total + (value * (@line_item_main.price + @line_item_var.price)) %>
-        <td><a class="btn btn-danger btn-sm deleteFromCart" data-productsku="<%= key %>">Remove</a></td>
-        </tr>
-      <% else %>
-        <% @line_item = Product.find_by("sku": key) %>
-        <tr>
-        <th scope="row"><%= count %><% count += 1 %></th>
-        <td><%= @line_item.name %></td>
-        <td><%= value %></td>
-        <td><%= number_to_currency(@line_item.price) %></td>
-        <td><%= number_to_currency(value * @line_item.price) %></td>
-        <% @grand_total = @grand_total + (value * @line_item.price) %>
-        <td><a class="btn btn-danger btn-sm deleteFromCart" data-productsku="<%= @line_item.sku %>">Remove</a></td>
-        </tr>
-      <% end %>
-
-    <% end %>
-<% end %>

@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
             decoded_order = decoded_order.gsub "/", ""
             decoded_order = JSON.parse(decoded_order)
 
-
             decoded_order.each do |key, value|
                   variation_number = key.length / 7
                   if variation_number == 1
@@ -33,12 +32,12 @@ class OrdersController < ApplicationController
                               current_search = Variation.find_by("sku": key[0 + (i * 7)..6 + (i * 7)])
                               @cart_orders[key.to_sym]["current_order_name"] = @cart_orders[key.to_sym]["current_order_name"] + current_search[:name]
                               @cart_orders[key.to_sym]["current_order_unit_price"] = @cart_orders[key.to_sym]["current_order_unit_price"] + current_search[:price]
-                              @cart_orders[key.to_sym]["current_order_total"] = @cart_orders[key.to_sym]["current_order_unit_price"] * @cart_orders[key.to_sym]["current_order_quantity"]
-                              @grand_total = @grand_total + @cart_orders[key.to_sym]["current_order_total"]
-
                               i += 1
                         end
 
+                        @cart_orders[key.to_sym]["current_order_total"] = @cart_orders[key.to_sym]["current_order_unit_price"] * @cart_orders[key.to_sym]["current_order_quantity"]
+                        @grand_total = @grand_total + @cart_orders[key.to_sym]["current_order_total"]
+                        
                   end
 
 
@@ -52,6 +51,60 @@ class OrdersController < ApplicationController
       end
     
       def new
+            @order_total = 0
+            decoded_cookie = JSON.parse(cookies[:cart].gsub!("-", ","))
+            decoded_cookie.each do |key, value|
+
+                  variation_number = key.length / 7
+
+                  if variation_number == 1
+                        order = Order.new
+                        current_search = Product.find_by("sku": key)
+                        order.name = current_search[:name]
+                        order.number = session.id
+                        order.user_id = current_user.id
+                        order.product_id = current_search[:id]
+                        order.quantity = value 
+                        order.price = value * current_search[:price]
+                        order.payment_status = "Paid"
+                        order.is_complete = true
+                        order.variation_id = 1
+                        order.save
+                        puts order.errors.messages
+                        @order_total = @order_total + order.price
+                        
+                  else
+                        current_search = Product.find_by("sku": key[0..6])
+                        order = Order.new
+                        order.name = current_search[:name]
+                        order.number = session.id
+                        order.user_id = current_user.id
+                        order.product_id = current_search[:id]
+                        order.quantity = value 
+                        order.price = current_search[:price]
+                        order.payment_status = "Paid"
+                        order.is_complete = true
+                        order.variation_id = 1
+
+
+                        i = 1
+                        while i < variation_number do
+                              current_search = Variation.find_by("sku": key[0 + (i * 7)..6 + (i * 7)])
+                              order.name = order.name + current_search[:name]
+                              order.price = order.price + current_search[:price]
+                              i += 1
+                        end
+
+                        order.price = order.price * value
+                        order.save
+                        @order_total = @order_total + order.price
+                        
+                  end
+
+            end
+            session[:orderTotal] = @order_total
+            redirect_to new_charge_path
+
       end
     
       def edit
@@ -73,10 +126,10 @@ class OrdersController < ApplicationController
       end
     
       def destroy
-            @order = Order.find(params[:id])
+            # @order = Order.find(params[:id])
 
-            @order.update(payment_status: "Removed from cart")
-            redirect_to orders_path
+            # @order.update(payment_status: "Removed from cart")
+            # redirect_to orders_path
       end
 
       private
