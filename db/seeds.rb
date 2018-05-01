@@ -9,6 +9,7 @@
 #Products seed
 
 # Variations
+var6 = Variation.create(name: "", description: "", price: 0, is_deleted: false, is_available: true, category: "", sku: "")
 var1 = Variation.create(name: "Add Ice", description: "Add ice to drink", price: 1, is_deleted: false, is_available: true, category: "Coffee", sku: "ADD1000")
 var2 = Variation.create(name: "Add Shot", description: "Add a shot of coffee to drink", price: 1, is_deleted: false, is_available: true, category: "Coffee", sku: "ADD1010")
 var3 = Variation.create(name: "Add Vanilla Syrup", description: "Add vanilla syrup to drink", price: 1, is_deleted: false, is_available: true, category: "Coffee", sku: "ADD1020")
