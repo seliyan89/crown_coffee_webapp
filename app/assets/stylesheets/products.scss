@@ -12,7 +12,7 @@
     filter: sepia(40%) contrast(150%) saturate(1.5);
 }
 
-#productCard {
+.productCard {
       font-size: 1em;
       overflow: hidden;
       padding: 0;
@@ -38,10 +38,14 @@
       max-height: 55%;
   }
   
-#productCard h5 {
+.productCard h5 {
       color: white;
 }
 
-#productCard h6 {
+.productCard h6 {
       color: white;
+}
+
+.deepProductCard {
+    color: white;
 }
