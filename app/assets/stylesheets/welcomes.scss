@@ -15,9 +15,10 @@
     // margin-bottom: 60px;
 }
 
-// .carousel-inner {
-//     height: 100%;
-// }
+.carousel-item {
+	background-size: cover;
+}
+
 .fill {
     @include size(100%, 100%);
 }
